@@ -1,0 +1,36 @@
+{
+    "name": "wren",
+    "displayName": "Wren",
+    "description": "Syntax highlighting and snippets for the Wren programming language",
+    "version": "0.0.1",
+    "publisher": "Nelarius",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Languages", "Snippets"
+    ],
+    "contributes": {
+        "languages": [
+                {
+                "id": "wren",
+                "aliases": ["Wren", "wren"],
+                "extensions": [".wren"],
+                "configuration": "./wren.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "wren",
+                "scopeName": "source.wren",
+                "path": "./syntaxes/wren.tmLanguage"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "wren",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}

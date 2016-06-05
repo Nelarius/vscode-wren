@@ -1,0 +1,42 @@
+{
+    "class": {
+        "prefix": "class",
+        "body": "\nclass $1 {\n  $2\n}",
+        "description": "Class definition",
+        "scope": "source.wren"
+    },
+    "else": {
+        "prefix": "else",
+        "body": "\nelse {\n  $1\n}",
+        "description": "else clause",
+        "scope": "source.wren"
+    },
+    "for": {
+        "prefix": "for",
+        "body": "\nfor ($1 in $2) {\n  $3\n}",
+        "description": "for statement",
+        "scope": "source.wren"
+    },
+    "if": {
+        "prefix": "if",
+        "body": "\nif ($1) {\n  $2\n}",
+        "description": "if statement",
+        "scope": "source.wren"
+    },
+    "import": {
+        "prefix": "import",
+        "body": "\nimport \"$1\" for ${1/^(\\w)|(?:_(\\w))/(?1\\u$1:)(?2\\u$2:)/g}\n",
+        "description": "import statement",
+        "scope": "source.wren"
+    },
+    "while": {
+        "prefix": "while",
+        "body": "\nwhile ($1) {\n  $2\n}",
+        "description": "while statement",
+        "scope": "source.wren"
+    },
+    "System.print": {
+        "prefix": "System.print",
+        "body": "System.print( ${1:s} )"
+    }
+}
