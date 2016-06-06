@@ -1,42 +1,56 @@
 {
     "class": {
         "prefix": "class",
-        "body": "\nclass $1 {\n  $2\n}",
+        "body": "class $1 {\n    $2\n}",
         "description": "Class definition",
         "scope": "source.wren"
     },
     "else": {
         "prefix": "else",
-        "body": "\nelse {\n  $1\n}",
+        "body": "else {\n    $1\n}",
         "description": "else clause",
         "scope": "source.wren"
     },
     "for": {
         "prefix": "for",
-        "body": "\nfor ($1 in $2) {\n  $3\n}",
+        "body": "for ($1 in $2) {\n    $3\n}",
         "description": "for statement",
         "scope": "source.wren"
     },
     "if": {
         "prefix": "if",
-        "body": "\nif ($1) {\n  $2\n}",
+        "body": "if ($1) {\n    $2\n}",
         "description": "if statement",
         "scope": "source.wren"
     },
     "import": {
         "prefix": "import",
-        "body": "\nimport \"$1\" for ${1/^(\\w)|(?:_(\\w))/(?1\\u$1:)(?2\\u$2:)/g}\n",
+        "body": "import \"$1\" for $2",
         "description": "import statement",
         "scope": "source.wren"
     },
     "while": {
         "prefix": "while",
-        "body": "\nwhile ($1) {\n  $2\n}",
+        "body": "while ($1) {\n    $2\n}",
         "description": "while statement",
         "scope": "source.wren"
     },
     "System.print": {
         "prefix": "System.print",
-        "body": "System.print( ${1:s} )"
+        "body": "System.print($1)",
+        "description": "Print a string or object with a trailing newline.",
+        "scope": "source.wren"
+    },
+    "System.write": {
+        "prefix": "System.write",
+        "body": "System.write($1)",
+        "description": "Print a string or object without a trailing newline.",
+        "scope": "source.wren"
+    },
+    "System.writeAll": {
+        "prefix": "System.writeAll",
+        "body": "System.writeAll($1)",
+        "description": "Print each element of a sequence without a trailing newline.",
+        "scope": "source.wren"
     }
 }
