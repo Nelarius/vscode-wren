@@ -44,10 +44,6 @@
                     "match": "\\b(true|false|null)\\b"
                 },
                 {
-                    "name": "variable.language",
-                    "match": "\\b(this|super)\\b"
-                },
-                {
                     "name": "constant.numeric",
                     "match": "\\b(0x[0-9a-fA-F]*|[0-9]+(\\.?[0-9]*)?(e(\\+|-)?[0-9]+)?)\\b"
                 },
@@ -59,6 +55,10 @@
         },
         "variable": {
             "patterns": [
+                {
+                    "name": "variable.language",
+                    "match": "\\b(this|super)\\b"
+                },
                 {
                     "name": "variable.other.class",
                     "match": "\\b__\\w*"
@@ -92,6 +92,10 @@
         "method": {
             "name": "meta.method",
             "begin": "(\\b(construct|static)\\s+)?(\\w+\\s*=|\\w+|\\+|-|\\*|/|%|<=?|>=?|==|!=?|&|\\||~)",
+            "beginCaptures": {
+                "1": { "name": "storage.modifier" },
+                "2": { "name": "entity.name.function" }
+            },
             "end": "}",
             "patterns": [
                 { "include": "#comment" },
@@ -105,6 +109,11 @@
         "foreignMethod": {
             "name": "meta.method",
             "begin": "(\\bforeign)\\s+(\b(construct|static)\\s+)?(\\w+\\s*=|\\w+|\\+|-|\\*|/|%|<=?|>=?|==|!=?|&|\\||~)",
+            "beginCaptures": {
+                "1": { "name": "storage.modifier" },
+                "2": { "name": "storage.modifier" },
+                "3": { "name": "entity.name.function" }
+            },
             "end": "\n"
         },
         "class": {
@@ -112,7 +121,7 @@
             "begin": "\\b(class)\\s+(\\w+)",
             "beginCaptures": {
                 "1": { "name": "storage.modifier" },
-                "2": { "name": "entity.name.type.class" }
+                "2": { "name": "entity.name.class" }
             },
             "end": "(?=})",
             "patterns": [
