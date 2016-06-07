@@ -11,7 +11,6 @@
         { "include": "#method" },
         { "include": "#foreignMethod"},
         { "include": "#class" },
-        { "include": "#classBody" },
         { "include": "#variable" },
         { "include": "#string" }
     ],
@@ -58,49 +57,8 @@
                 }
             ]
         },
-        "method": {
-            "name": "meta.method",
-            "begin": "(\\b(construct|static)\\s+)?(\\w+\\s*=|\\w+|\\+|-|\\*|/|%|<=?|>=?|==|!=?|&|\\||~)",
-            "end": "}",
-            "patterns": [
-                { "include": "#comment" },
-                { "include": "#blockComment" },
-                { "include": "#keyword" },
-                { "include": "#constant" },
-                { "include": "#string" },
-                { "include": "#fieldName" }
-            ]
-        },
-        "foreignMethod": {
-            "name": "meta.method",
-            "begin": "(\\bforeign)\\s+(\b(construct|static)\\s+)?(\\w+\\s*=|\\w+|\\+|-|\\*|/|%|<=?|>=?|==|!=?|&|\\||~)",
-            "end": "\n"
-        },
-        "class": {
-            "name": "meta.class",
-            "begin": "\\b(class)\\s+(\\w+)",
-            "beginCaptures": {
-                "1": { "name": "storage.modifier" },
-                "2": { "name": "entity.name.type.class" }
-            },
-            "end": "(?=})",
-            "patterns": [
-                { "include": "#comment" },
-                { "include": "#blockComment" },
-                { "include": "method" },
-                { "include": "foreignMethod" }
-            ]
-        },
-        "fieldName": {
-            "name": "variable.other",
-            "match": "_[A-Za-z0-9_]+"
-        },
         "variable": {
             "patterns": [
-                {
-                    "name": "variable.other.global",
-                    "match": "\\b[A-Z]\\w"
-                },
                 {
                     "name": "variable.other.class",
                     "match": "\\b__\\w*"
@@ -129,6 +87,39 @@
                     "name": "invalid.illegal.unknown-escape",
                     "match": "\\\\(?:x[0-9A-Fa-f]{0,1}|u[0-9A-Fa-f]{0,3}|U[0-9A-Fa-f]{0,7}|.)"
                 }
+            ]
+        },
+        "method": {
+            "name": "meta.method",
+            "begin": "(\\b(construct|static)\\s+)?(\\w+\\s*=|\\w+|\\+|-|\\*|/|%|<=?|>=?|==|!=?|&|\\||~)",
+            "end": "}",
+            "patterns": [
+                { "include": "#comment" },
+                { "include": "#blockComment" },
+                { "include": "#keyword" },
+                { "include": "#constant" },
+                { "include": "#string" },
+                { "include": "#variable" }
+            ]
+        },
+        "foreignMethod": {
+            "name": "meta.method",
+            "begin": "(\\bforeign)\\s+(\b(construct|static)\\s+)?(\\w+\\s*=|\\w+|\\+|-|\\*|/|%|<=?|>=?|==|!=?|&|\\||~)",
+            "end": "\n"
+        },
+        "class": {
+            "name": "meta.class",
+            "begin": "\\b(class)\\s+(\\w+)",
+            "beginCaptures": {
+                "1": { "name": "storage.modifier" },
+                "2": { "name": "entity.name.type.class" }
+            },
+            "end": "(?=})",
+            "patterns": [
+                { "include": "#comment" },
+                { "include": "#blockComment" },
+                { "include": "method" },
+                { "include": "foreignMethod" }
             ]
         }
     },
