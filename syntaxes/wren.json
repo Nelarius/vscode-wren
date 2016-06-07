@@ -34,6 +34,26 @@
                 {
                     "name": "keyword.operator",
                     "match": "\\b(is)\\b"
+                },
+                {
+                    "name": "keyword.operator.logical",
+                    "match": "!|&&|\\|\\|"
+                },
+                {
+                    "name": "keyword.operator.range",
+                    "match": "(\\.\\.\\.?)"
+                },
+                {
+                    "name": "keyword.operator.arithmetic",
+                    "match": "(\\-|\\+|\\*|\/|%)"
+                },
+                {
+                    "name": "keyword.operator.comparison",
+                    "match": "(==|!=|<=|>=|<|>)"
+                },
+                {
+                    "name": "keyword.operator.assignment",
+                    "match": "(=)"
                 }
             ]
         },
