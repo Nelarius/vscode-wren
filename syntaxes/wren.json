@@ -29,7 +29,7 @@
             "patterns": [
                 {
                     "name": "keyword.control",
-                    "match": "\\b(?:break|else|for|if|import|in|new|return|while|var)\\b"
+                    "match": "\\b(?:foreign|class|break|else|for|if|import|in|new|return|while|var)\\b"
                 },
                 {
                     "name": "keyword.operator",
