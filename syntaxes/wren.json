@@ -104,6 +104,10 @@
                 {
                     "name": "invalid.illegal.unknown-escape",
                     "match": "\\\\(?:x[0-9A-Fa-f]{0,1}|u[0-9A-Fa-f]{0,3}|U[0-9A-Fa-f]{0,7}|.)"
+                },
+                {
+                    "name": "constant.character.interpolation",
+                    "match": "%\\((.*?)\\)"
                 }
             ]
         },

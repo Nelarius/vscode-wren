@@ -40,3 +40,7 @@ My attempt at parsing the method definition and setting the method name attribut
 ```
 
 The only problem was finding the matching closing brace. Instead, the method body would end at the very first closing brace of any if-statement or block argument, causing the very next statement to be parsed as a method definition, no matter what it was.
+
+## Better string interpolation
+
+String interpolation also needs to figure out the true closing parenthesis. Currently it breaks on expressions involving parenthesis, like method calls.
