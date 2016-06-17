@@ -5,48 +5,76 @@
 
     "patterns": [
         { "include": "#code" },
-        { "include": "#modifiers" },
         { "include": "#class" }
     ],
     "repository": {
         "comment": {
-            "name": "comment.line",
+            "name": "comment.line.wren",
             "match": "//.*"
         },
         "blockComment": {
-            "name": "comment.block",
+            "name": "comment.block.wren",
             "begin": "/\\*",
             "end": "\\*/",
             "patterns": [ { "include": "#blockComment" } ]
         },
+        "block": {
+            "begin": "{",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.begin.wren"
+                }
+            },
+            "end": "}",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.section.block.end.wren"
+                }
+            },
+            "name": "meta.block.wren",
+            "patterns": [
+                { "include": "#code" },
+                {
+                    "name": "meta.block.parameters.wren",
+                    "begin": "\\|",
+                    "end": "\\|",
+                    "patterns": [
+                        {
+                            "name": "variable.parameter.function.wren",
+                            "match": "\\w+"
+                        }
+                    ]
+                }
+            ]
+        },
         "keyword": {
             "patterns": [
                 {
-                    "name": "keyword.control",
-                    "match": "\\b(?:break|else|for|if|import|in|new|return|while|var)\\b"
+                    "name": "keyword.control.wren",
+                    "match": "\\b(?:break|else|for|if|import|in|return|while|var)\\b"
                 },
                 {
-                    "name": "keyword.operator",
+                    "name": "keyword.operator.wren",
                     "match": "\\b(is)\\b"
                 },
                 {
-                    "name": "keyword.operator.logical",
+                    "name": "keyword.operator.logical.wren",
                     "match": "!|&&|\\|\\|"
                 },
                 {
-                    "name": "keyword.operator.range",
+                    "name": "keyword.operator.range.wren",
                     "match": "(\\.\\.\\.?)"
                 },
                 {
-                    "name": "keyword.operator.arithmetic",
+                    "name": "keyword.operator.arithmetic.wren",
                     "match": "(\\-|\\+|\\*|\/|%)"
                 },
                 {
-                    "name": "keyword.operator.comparison",
+                    "name": "keyword.operator.comparison.wren",
                     "match": "(==|!=|<=|>=|<|>)"
                 },
                 {
-                    "name": "keyword.operator.assignment",
+                    "name": "keyword.operator.assignment.wren",
                     "match": "(=)"
                 }
             ]
@@ -54,41 +82,37 @@
         "constant": {
             "patterns": [
                 {
-                    "name": "constant.language",
+                    "name": "constant.language.wren",
                     "match": "\\b(true|false|null)\\b"
                 },
                 {
-                    "name": "constant.numeric",
+                    "name": "constant.numeric.wren",
                     "match": "\\b(0x[0-9a-fA-F]*|[0-9]+(\\.?[0-9]*)?(e(\\+|-)?[0-9]+)?)\\b"
                 },
                 {
-                    "name": "constant.numeric.hexadecimal",
+                    "name": "constant.numeric.hexadecimal.wren",
                     "match": "0x[A-Fa-f0-9]+"
                 }
             ]
         },
-        "modifiers": {
-            "name": "storage.modifier",
-            "match": "\\b(?:foreign|static)\\b"
-        },
         "variable": {
             "patterns": [
                 {
-                    "name": "variable.language",
+                    "name": "variable.language.wren",
                     "match": "\\b(this|super)\\b"
                 },
                 {
-                    "name": "variable.other.class",
+                    "name": "variable.other.class.wren",
                     "match": "\\b__\\w*"
                 },
                 {
-                    "name": "variable.other.instance",
+                    "name": "variable.other.instance.wren",
                     "match": "\\b_\\w*"
                 }
             ]
         },
         "string": {
-            "name": "string.quoted.double",
+            "name": "string.quoted.double.wren",
             "begin": "\"",
             "end": "\"",
             "patterns": [
@@ -98,15 +122,15 @@
         "stringEscapes": {
             "patterns": [
                 {
-                    "name": "constant.character.escape",
+                    "name": "constant.character.escape.wren",
                     "match": "\\\\(?:[0\"\\abfnrtv]|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{4})"
                 },
                 {
-                    "name": "invalid.illegal.unknown-escape",
+                    "name": "invalid.illegal.unknown-escape.wren",
                     "match": "\\\\(?:x[0-9A-Fa-f]{0,1}|u[0-9A-Fa-f]{0,3}|U[0-9A-Fa-f]{0,7}|.)"
                 },
                 {
-                    "name": "constant.character.interpolation",
+                    "name": "constant.character.interpolation.wren",
                     "match": "%\\((.*?)\\)"
                 }
             ]
@@ -115,26 +139,93 @@
             "patterns": [
                 { "include": "#blockComment" },
                 { "include": "#comment" },
+                { "include": "#block" },
                 { "include": "#keyword" },
                 { "include": "#constant" },
                 { "include": "#variable" },
                 { "include": "#string" }
             ]
         },
-        "class": {
-            "name": "meta.class",
-            "begin": "(\\b(foreign)\\s+)?(\\bclass)\\s+(\\w+)",
+        "method": {
+            "name": "meta.method.wren",
+            "begin": "(?:\\b(construct|static)\\s+)?(\\w+=|\\w+|\\+|-|\\*|\\/|%|<=?|>=?|==|!=?|&|\\||~)",
             "beginCaptures": {
-                "2": { "name": "storage.modifier" },
-                "3": { "name": "storage.modifier" },
-                "4": { "name": "entity.name.class" }
+                "1": { "name": "storage.modifier.wren" },
+                "2": { "name": "entity.name.function.wren" }
             },
-            "end": "(?=})",
+            "end": "}",
             "patterns": [
                 {
-                    "name": "meta.class.body",
-                    "begin": "{",
+                    "name": "meta.method.identifier.wren",
+                    "begin": "\\(",
+                    "end": "\\)",
                     "patterns": [
+                        {
+                            "name": "variable.parameter.function.wren",
+                            "match": "\\w+"
+                        }
+                    ]
+                },
+                {
+                    "name": "meta.method.body.wren",
+                    "begin": "{",
+                    "end": "(?=})",
+                    "patterns": [
+                        { "include": "#code" }
+                    ]
+                }
+            ]
+        },
+        "foreignMethod": {
+            "name": "meta.method.wren",
+            "begin": "\\b(foreign)\\s+(?:\\b(construct|static)\\s+)?(\\w+=|\\w+|\\+|-|\\*|\\/|%|<=?|>=?|==|!=?|&|\\||~)",
+            "beginCaptures": {
+                "1": { "name": "storage.modifier.wren" },
+                "2": { "name": "storage.modifier.wren" },
+                "3": { "name": "entity.name.function.wren" }
+            },
+            "end": "\n",
+            "patterns": [
+                { "include": "#comment" },
+                {
+                    "name": "meta.method.identifier.wren",
+                    "begin": "\\(",
+                    "end": "\\)",
+                    "patterns": [
+                        {
+                            "name": "variable.parameter.function.wren",
+                            "match": "\\w+"
+                        }
+                    ]
+                }
+            ]
+        },
+        "class": {
+            "name": "meta.class",
+            "begin": "(?:\\b(foreign)\\s+)?(\\bclass)\\s+(\\w+)\\s+(?:(\\bis)\\s+(\\w+))?",
+            "beginCaptures": {
+                "1": { "name": "storage.modifier.wren" },
+                "2": { "name": "storage.modifier.wren" },
+                "3": { "name": "entity.name.class.wren" },
+                "4": { "name": "storage.modifier.wren" },
+                "5": { "name": "entity.name.class.wren" }
+            },
+            "end": "}",
+            "endCaptures": {
+                "0": { "name": "punctuation.section.class.end.wren" }
+            },
+            "patterns": [
+                {
+                    "name": "meta.class.body.wren",
+                    "begin": "{",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.section.class.begin.wren" }
+                    },
+                    "patterns": [
+                        { "include": "#comment" },
+                        { "include": "#blockComment" },
+                        { "include": "#foreignMethod" },
+                        { "include": "#method" },
                         { "include": "#code" }
                     ],
                     "end": "(?=})"
