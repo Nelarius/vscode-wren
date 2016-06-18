@@ -10,7 +10,9 @@ ext install vscode-wren
 
 ### Syntax highlighting
 ![Syntax highlighting](https://raw.githubusercontent.com/Nelarius/vscode-wren/master/images/syntax-highlighting.png?token=ADH_jKJ5SJcQi5Rp3pUv6DtkvqlAmMfPks5XboouwA%3D%3D)
+
 *Displayed using the Dark+ color theme in order to see the extent of the syntax highlighting.*
+
 ### Snippets
 ![Snippets](https://raw.githubusercontent.com/Nelarius/vscode-wren/master/images/if-snippet.png?token=ADH_jEsK4hwaFFs6ajdENMX0WQgNt3WAks5XbowswA%3D%3D)
 * snippets for base language features, such as control flow and import statements
