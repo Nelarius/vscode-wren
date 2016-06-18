@@ -225,8 +225,7 @@
                         { "include": "#comment" },
                         { "include": "#blockComment" },
                         { "include": "#foreignMethod" },
-                        { "include": "#method" },
-                        { "include": "#code" }
+                        { "include": "#method" }
                     ],
                     "end": "(?=})"
                 }
