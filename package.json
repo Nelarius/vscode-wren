@@ -7,6 +7,15 @@
     "engines": {
         "vscode": "^1.0.0"
     },
+    "license": "See the license in LICENSE.md",
+    "bugs": {
+        "url": "https://github.com/Nelarius/vscode-wren/issues"
+    },
+    "homepage": "https://github.com/Nelarius/vscode-wren/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Nelarius/vscode-wren"
+    },
     "categories": [
         "Languages", "Snippets"
     ],
