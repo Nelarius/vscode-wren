@@ -3,7 +3,7 @@
     "displayName": "Wren",
     "description": "Syntax highlighting and snippets for the Wren programming language",
     "version": "0.1.0",
-    "publisher": "Nelarius",
+    "publisher": "nelarius",
     "engines": {
         "vscode": "^1.0.0"
     },
