@@ -18,6 +18,12 @@ ext install vscode-wren
 * snippets for base language features, such as control flow and import statements
 * snippets for core library (currently only consisting of `System`)
 
+## Changelog
+
+#### 0.1.1
+
+Added syntax highlighting for the subscript operator.
+
 ## Roadmap
 
 While Wren is still changing, a [static analyzer](https://github.com/munificent/wrenalyzer) is already under development. In the future, I want to integrate such a tool into this extension in order to implement autocomplete and error checking.

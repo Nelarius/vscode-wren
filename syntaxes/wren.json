@@ -200,6 +200,47 @@
                 }
             ]
         },
+        "subscriptOperator": {
+            "name": "meta.method.wren",
+            "begin": "\\[",
+            "beginCaptures": {
+                "0": {
+                    "name": "entity.name.function.wren"
+                }
+            },
+            "end": "}",
+            "patterns": [
+                {
+                    "name": "meta.method.identifier.wren",
+                    "begin": "\\w",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "variable.parameter.function.wren"
+                        }
+                    },
+                    "end": "\\]",
+                    "endCaptures": {
+                        "0": {
+                            "name": "entity.name.function.wren"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "name": "variable.parameter.function.wren",
+                            "match": "\\w+"
+                        }
+                    ]
+                },
+                {
+                    "name": "meta.method.body.wren",
+                    "begin": "{",
+                    "end": "(?=})",
+                    "patterns": [
+                        { "include": "#code" }
+                    ]
+                }
+            ]
+        },
         "class": {
             "name": "meta.class",
             "begin": "(?:\\b(foreign)\\s+)?(\\bclass)\\s+(\\w+)\\s+(?:(\\bis)\\s+(\\w+))?",
@@ -225,6 +266,7 @@
                         { "include": "#comment" },
                         { "include": "#blockComment" },
                         { "include": "#foreignMethod" },
+                        { "include": "#subscriptOperator" },
                         { "include": "#method" }
                     ],
                     "end": "(?=})"

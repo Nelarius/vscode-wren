@@ -2,7 +2,7 @@
     "name": "vscode-wren",
     "displayName": "Wren",
     "description": "Syntax highlighting and snippets for the Wren programming language",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "nelarius",
     "engines": {
         "vscode": "^1.0.0"
