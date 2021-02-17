@@ -135,6 +135,29 @@
                 }
             ]
         },
+        "function": {
+            "name": "meta.function.wren",
+            "match": "(?:[.]|\\b)(\\w+)\\(",
+            "captures": {
+                "1": { "name": "entity.name.function.wren" }
+            }
+        },
+        "static_function": {
+            "name": "meta.static_function.wren",
+            "match": "\\b([A-Z]+\\w*)[.](\\w+)\\(",
+            "captures": {
+                "1": { "name": "entity.name.type.wren" },
+                "2": { "name": "entity.name.function.class.wren" }
+            }
+        },
+        "static_constant": {
+            "name": "meta.static_constant.wren",
+            "match": "\\b([A-Z]+\\w*)[.](\\w+)\\b",
+            "captures": {
+                "1": { "name": "entity.name.type.wren" },
+                "2": { "name": "variable.other.constant" }
+            }
+        },
         "code": {
             "patterns": [
                 { "include": "#blockComment" },
@@ -143,7 +166,10 @@
                 { "include": "#keyword" },
                 { "include": "#constant" },
                 { "include": "#variable" },
-                { "include": "#string" }
+                { "include": "#string" },
+                { "include": "#function" },
+                { "include": "#static_function" },
+                { "include": "#static_constant" }
             ]
         },
         "method": {
